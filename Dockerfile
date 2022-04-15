@@ -7,4 +7,4 @@ RUN addgroup -S dotnet
 RUN adduser -S -D -h /app dotnet dotnet
 RUN chown -R dotnet:dotnet /app
 USER dotnet
-ENTRYPOINT ["./BankOfGringotts.Api"]
+CMD ["./BankOfGringotts.Api"]
