@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.1" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BankOfGringotts.Common\BankOfGringotts.Common.csproj" />
+    <ProjectReference Include="..\BankOfGringotts.Context\BankOfGringotts.Context.csproj" />
+    <ProjectReference Include="..\BankOfGringotts.Contracts\BankOfGringotts.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>

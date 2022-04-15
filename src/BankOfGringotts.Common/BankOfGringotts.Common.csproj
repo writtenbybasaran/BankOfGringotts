@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="10.4.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.16" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BankOfGringotts.Context\BankOfGringotts.Context.csproj" />
+    <ProjectReference Include="..\BankOfGringotts.Contracts\BankOfGringotts.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>
