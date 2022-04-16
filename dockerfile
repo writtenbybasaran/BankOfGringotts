@@ -1,10 +1,19 @@
-FROM mcr.microsoft.com/dotnet/sdk:5.0.407-alpine3.14-amd64
+# First stage
+FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /app
-COPY publish/ .
-ENV ASPNETCORE_URLS=http://+:80
-EXPOSE 80
-RUN addgroup -S dotnet
-RUN adduser -S -D -h /app dotnet dotnet
-RUN chown -R dotnet:dotnet /app
-USER dotnet
-CMD ["./BankOfGringotts.Api"]
+
+# Copy csproj and restore as distinct layers
+COPY *.sln .
+COPY BankOfGringotts/*.csproj ./BankOfGringotts/
+RUN dotnet restore
+
+# Copy everything else and build website
+COPY BankOfGringotts/. ./BankOfGringotts/
+WORKDIR /app/BankOfGringotts
+RUN dotnet publish -c release -o /DockerOutput/Website --no-restore
+
+# Final stage
+FROM mcr.microsoft.com/dotnet/aspnet:5.0
+WORKDIR /DockerOutput/Website
+COPY --from=build /DockerOutput/Website ./
+ENTRYPOINT ["dotnet", "BankOfGringotts.Api.dll"]
