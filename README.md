@@ -2,6 +2,8 @@
 
 This app simulates transactions made in gringotts bank at a very basic level.
 
+Demo app url : http://bankofgringotts.eu-central-1.elasticbeanstalk.com/swagger/index.html
+
 It contains these:
 
 - [ ] ExceptionHandling
